@@ -3,8 +3,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.preprocessing import  MultiLabelBinarizer
 from sklearn.feature_extraction.text import TfidfVectorizer
-
-
+import re
 
 #CHAPTER 3: DATA PREPROCESSING AND ANALYSIS
 #3.1. Understanding the Data
@@ -188,4 +187,10 @@ tfidf_df = pd.DataFrame(tfidf_matrix.toarray(), index=movies['movieId'], columns
 # Save processed datasets for model training
 tfidf_df.to_csv("../DATASET/tfidf_genres.csv")
 
+# 3.4.2. Tạo cột năm công chiếu phim trích từ "title" trong movies dataset
+movies['year'] = movies['title'].str.extract(r'\((\d{4})\)')
+# Display result
+print(movies)
+# Save the new dataset to a CSV file
+movies.to_csv("../DATASET/movies_with_year.csv", index=False)
 print("3.4 Data Preprocessing for the Model completed!")
