@@ -187,7 +187,7 @@ tfidf_df = pd.DataFrame(tfidf_matrix.toarray(), index=movies['movieId'], columns
 # Save processed datasets for model training
 tfidf_df.to_csv("../DATASET/tfidf_genres.csv")
 
-# 3.4.2. Tạo cột năm công chiếu phim trích từ "title" trong movies dataset
+# 3.4.3. Tạo cột năm công chiếu phim trích từ "title" trong movies dataset
 movies['year'] = movies['title'].str.extract(r'\((\d{4})\)')
 # Display result
 print(movies)
